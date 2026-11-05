@@ -1,0 +1,44 @@
+:root {
+  /* Paleta: papel de rótulo + tinta espresso */
+  --paper: #f4ebdd;
+  --paper-deep: #e8dcc8;
+  --ink: #1b1210;
+  --ink-soft: #4a3a33;
+  --on-accent: #fff8ec;
+
+  /* Acento por modo (contraste con --on-accent ≥ 5.5:1) */
+  --accent-calor: #085a73;   /* bebidas frías */
+  --accent-frio: #9a3417;    /* bebidas calientes */
+  --accent-templado: #435421; /* mixto */
+  --accent: var(--accent-templado);
+
+  --font-display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, Consolas, monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-band='calor'] { --accent: var(--accent-calor); }
+[data-band='frio'] { --accent: var(--accent-frio); }
+[data-band='templado'] { --accent: var(--accent-templado); }
+
+* { box-sizing: border-box; }
+
+html {
+  /* 1rem = 20px a 1920 de ancho; escala con la pantalla del drive-thru */
+  font-size: clamp(12px, calc(100vw / 96), 28px);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 0.2rem solid var(--ink);
+  outline-offset: 0.2rem;
+}

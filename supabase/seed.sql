@@ -1,0 +1,23 @@
+-- Seed: 21 productos genéricos de cafetería
+insert into public.products (name, price, image_url, category, temperature, tags, emoji) values
+  ('Espresso', 38.00, null, 'cafe', 'caliente', array['cafe'], '☕'),
+  ('Americano', 42.00, null, 'cafe', 'caliente', array['cafe'], '☕'),
+  ('Capuchino', 55.00, null, 'cafe', 'caliente', array['cafe'], '☕'),
+  ('Latte de vainilla', 60.00, null, 'cafe', 'caliente', array['cafe'], '🥛'),
+  ('Moka caliente', 68.00, null, 'cafe', 'caliente', array['cafe'], '🍫'),
+  ('Chocolate caliente', 52.00, null, 'bebida_caliente', 'caliente', '{}', '🍫'),
+  ('Té chai latte', 58.00, null, 'bebida_caliente', 'caliente', '{}', '🫖'),
+  ('Cold brew', 62.00, null, 'cafe', 'fria', array['cafe'], '🧊'),
+  ('Latte helado', 64.00, null, 'cafe', 'fria', array['cafe'], '🥤'),
+  ('Frappé de moka', 85.00, null, 'frappe', 'fria', array['frappe'], '🥤'),
+  ('Frappé de caramelo', 90.00, null, 'frappe', 'fria', array['frappe'], '🍮'),
+  ('Frappé de galleta', 98.00, null, 'frappe', 'fria', array['frappe'], '🍪'),
+  ('Limonada mineral', 45.00, null, 'bebida_fria', 'fria', '{}', '🍋'),
+  ('Té helado de durazno', 48.00, null, 'bebida_fria', 'fria', '{}', '🍑'),
+  ('Croissant de mantequilla', 40.00, null, 'desayuno', null, array['desayuno'], '🥐'),
+  ('Sándwich de jamón y queso', 78.00, null, 'desayuno', null, array['desayuno'], '🥪'),
+  ('Hotcakes con miel', 89.00, null, 'desayuno', null, array['desayuno'], '🥞'),
+  ('Cheesecake de fresa', 95.00, null, 'postre', null, array['postre'], '🍰'),
+  ('Brownie con nuez', 55.00, null, 'postre', null, array['postre'], '🍫'),
+  ('Rol de canela', 62.00, null, 'postre', null, array['postre', 'desayuno'], '🥮'),
+  ('Galleta de avena', 28.00, null, 'snack', null, '{}', '🍪');
