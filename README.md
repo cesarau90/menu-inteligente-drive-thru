@@ -43,7 +43,7 @@ VITE_OPENWEATHER_API_KEY=
 
 La tabla `products` tiene RLS activado con lectura pública solo de productos con `available = true`. Si Supabase falla o la tabla está vacía, la app usa el catálogo de respaldo (el panel indica cuál está activo).
 
-Para agregar fotos, llena la columna `image_url`; si está vacía o falla al cargar, la tarjeta muestra un emoji sobre un bloque de color.
+**Fotos de los productos.** Las 21 fotos viven en `public/products/<slug>.webp` (600×450, menos de 80 KB cada una) y la columna `image_url` apunta a ellas (por ejemplo `/products/frappe-caramelo.webp`). Si ya tenías el catálogo cargado en Supabase, corre [supabase/update-images.sql](supabase/update-images.sql) en el SQL Editor para asignarlas; si empiezas de cero, `seed.sql` ya las incluye. Si `image_url` está vacío o la foto falla al cargar, la tarjeta muestra un emoji sobre un bloque de color. Los créditos están en [Créditos de imágenes](#créditos-de-imágenes).
 
 ### OpenWeatherMap
 
@@ -104,3 +104,31 @@ La lógica de recomendación (bandas de clima/fila/hora, fronteras 28/20 °C y 6
 ## Scripts
 
 `npm run dev` · `npm run build` · `npm run test:run` · `npm run lint`
+
+## Créditos de imágenes
+
+Todas las fotos de productos provienen de [Pexels](https://www.pexels.com) y se usan bajo la [Licencia de Pexels](https://www.pexels.com/license/), que permite su uso gratuito, comercial y sin atribución obligatoria; se acreditan aquí como cortesía a sus autores. Se redimensionaron y recortaron a 600×450 px en formato WebP. Elegí fotos sin logos ni marcas visibles; la descripción de cada producto es mía, no el título original de la foto.
+
+| Producto | Archivo | Autor | Foto original |
+|---|---|---|---|
+| Espresso | `espresso.webp` | [Cup of Couple](https://www.pexels.com/@cup-of-couple/) | [Ver foto](https://www.pexels.com/photo/close-up-shot-of-a-cup-of-coffee-7657863/) |
+| Americano | `americano.webp` | [Emrah](https://www.pexels.com/@emrah-398670870/) | [Ver foto](https://www.pexels.com/photo/morning-sunlight-on-coffee-cup-on-wooden-table-38316318/) |
+| Capuchino | `capuchino.webp` | [Pixabay](https://www.pexels.com/@pixabay/) | [Ver foto](https://www.pexels.com/photo/ceramic-cup-with-coffee-late-art-414605/) |
+| Latte de vainilla | `latte.webp` | [Shameel mukkath](https://www.pexels.com/@shameel-mukkath-3421394/) | [Ver foto](https://www.pexels.com/photo/close-up-shot-of-a-glass-of-cappuccino-5112649/) |
+| Moka caliente | `moka.webp` | [Angela Khebou](https://www.pexels.com/@angela-khebou-259135285/) | [Ver foto](https://www.pexels.com/photo/photo-of-a-chocolate-dessert-in-a-glass-15455285/) |
+| Chocolate caliente | `chocolate.webp` | [Caleb Oquendo](https://www.pexels.com/@caleboquendo/) | [Ver foto](https://www.pexels.com/photo/red-mug-with-hot-cocoa-text-on-white-background-40254957/) |
+| Té chai latte | `te-chai.webp` | [eat kubba](https://www.pexels.com/@eat-kubba-15863701/) | [Ver foto](https://www.pexels.com/photo/white-cup-with-brown-liquid-11833310/) |
+| Cold brew | `cold-brew.webp` | [Esra Nur Kalay](https://www.pexels.com/@esranurkalay/) | [Ver foto](https://www.pexels.com/photo/clear-glass-pitcher-with-iced-coffee-13302014/) |
+| Latte helado | `latte-helado.webp` | [mackling](https://www.pexels.com/@mackling-2161618291/) | [Ver foto](https://www.pexels.com/photo/minimalist-iced-coffee-on-white-background-38519285/) |
+| Frappé de moka | `frappe-moka.webp` | [Luis Espinoza](https://www.pexels.com/@luis-espinoza-1873776/) | [Ver foto](https://www.pexels.com/photo/clear-glass-with-iced-mocha-11512983/) |
+| Frappé de caramelo | `frappe-caramelo.webp` | [Jordan Benton](https://www.pexels.com/@bokehmo/) | [Ver foto](https://www.pexels.com/photo/coffee-with-cream-in-a-plastic-cup-15086185/) |
+| Frappé de galleta | `frappe-oreo.webp` | [Farhad Ibrahimzade](https://www.pexels.com/@farhad/) | [Ver foto](https://www.pexels.com/photo/chocolate-frappuccino-with-oreo-toppings-8743859/) |
+| Limonada mineral | `limonada.webp` | [çiğdem çelenk](https://www.pexels.com/@cigdem-celenk-689599686/) | [Ver foto](https://www.pexels.com/photo/glass-of-lemonade-18187120/) |
+| Té helado de durazno | `te-helado.webp` | [Alina Vilchenko](https://www.pexels.com/@monstera/) | [Ver foto](https://www.pexels.com/photo/a-glass-of-water-with-ice-and-bits-of-mushroom-13383488/) |
+| Croissant de mantequilla | `croissant.webp` | [James Collington](https://www.pexels.com/@james-collington-2147687246/) | [Ver foto](https://www.pexels.com/photo/close-up-of-freshly-baked-croissants-in-bakery-display-30403209/) |
+| Sándwich de jamón y queso | `sandwich.webp` | [MikeGz](https://www.pexels.com/@mikegz-400576129/) | [Ver foto](https://www.pexels.com/photo/ham-and-cheese-toasts-15110224/) |
+| Hotcakes con miel | `hotcakes.webp` | [yasemin](https://www.pexels.com/@yasemin-58133527/) | [Ver foto](https://www.pexels.com/photo/pancakes-served-with-maple-syrup-and-strawberries-21820995/) |
+| Cheesecake de fresa | `cheesecake.webp` | [Helin Gezer](https://www.pexels.com/@helin-gezer-903013644/) | [Ver foto](https://www.pexels.com/photo/piece-of-cake-in-fruit-sauce-and-a-glass-of-infused-water-25810621/) |
+| Brownie con nuez | `brownie.webp` | [Kaboompics (kaboompics.com)](https://www.pexels.com/@karola-g/) | [Ver foto](https://www.pexels.com/photo/piece-of-cake-5386673/) |
+| Rol de canela | `rol-canela.webp` | [Bethany Hicks](https://www.pexels.com/@bethany-hicks-368308603/) | [Ver foto](https://www.pexels.com/photo/close-up-photo-of-cinnamon-rolls-with-cream-14576632/) |
+| Galleta de avena | `galleta.webp` | [Angela Khebou](https://www.pexels.com/@angela-khebou-259135285/) | [Ver foto](https://www.pexels.com/photo/cookies-on-tray-13184916/) |

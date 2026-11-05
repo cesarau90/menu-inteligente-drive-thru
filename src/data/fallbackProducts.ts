@@ -39,7 +39,7 @@ export const FALLBACK_PRODUCTS: Product[] = SEED.map(
     id,
     name,
     price,
-    imageUrl: null,
+    imageUrl: `/products/${id}.webp`,
     category,
     temperature,
     tags,
