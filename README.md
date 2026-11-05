@@ -4,6 +4,15 @@ Pantalla de menú para el cliente que espera en la fila del drive-thru. Destaca 
 
 **Stack:** React + TypeScript (Vite), Supabase (catálogo), OpenWeatherMap (clima de Tampico, MX), Vitest.
 
+## Demo en vivo
+
+| Qué | URL |
+|---|---|
+| Pantalla del cliente | <https://menu-inteligente-drive-thru.vercel.app/> |
+| Panel de control | <https://menu-inteligente-drive-thru.vercel.app/panel> |
+
+Ver los pasos para la presentación en [Demo en clase](#demo-en-clase).
+
 ## Inicio rápido
 
 ```bash
@@ -50,13 +59,21 @@ Crea una API key gratuita y ponla en `VITE_OPENWEATHER_API_KEY`. Consulta Tampic
 
 Los productos que coinciden con la franja horaria van primero; el resto de la categoría del clima completa hasta 4. Los destacados solo se recalculan cuando **cambia de banda** (clima, fila corta/larga o franja), no con cada movimiento del slider ni con el reloj.
 
-## Guion de demo para clase
+## Demo en clase
 
-1. Abre `/` en el monitor grande y `/panel` en otra pestaña (se sincronizan por `localStorage`).
-2. En el panel, sube la temperatura a **33 °C** → la barra pasa a "Día caluroso → Bebidas frías".
-3. Baja a **15 °C** → "Día fresco → Bebidas calientes".
-4. Mueve la fila de **3 a 9 carros** → aparece "Fila larga: selección premium" y los más caros pasan primero.
-5. Cambia la hora a **08:00** y luego a **15:00** → café/desayuno vs. frappés/postres.
+1. **Abre las dos pantallas en pestañas del mismo navegador y la misma computadora:**
+   la pantalla del cliente (`/`) en una pestaña y el panel (`/panel`) en otra. Se comunican por `localStorage`, así que deben estar en el **mismo navegador**; no funciona entre dos dispositivos distintos. Pon la pestaña de `/` en pantalla completa (F11) para que se vea como el menú del drive-thru.
+2. **Deja el clima en "Simulado"** en el panel, para controlar la temperatura a mano.
+3. **Mueve la temperatura** y mira la barra de arriba en la pestaña de `/`:
+   - **33 °C** → "Día caluroso → Bebidas frías".
+   - **15 °C** → "Día fresco → Bebidas calientes".
+   - **24 °C** → "Clima templado → Mixto".
+4. **Mueve el slider de fila** de **3 a 9 carros** → aparece "Fila larga: selección premium" y los productos más caros pasan primero. Con 6 carros o más se activa el modo premium; de 0 a 5 las recomendaciones son aleatorias dentro de la categoría del clima.
+5. **Cambia la hora** a **08:00** y luego a **15:00** → café y desayuno por la mañana, frappés y postres por la tarde.
+6. **Observa cómo cambian las recomendaciones**: al cruzar de banda, los cuatro destacados se reemplazan con una transición. El contador de carros y la temperatura se actualizan al instante, pero los productos solo cambian cuando se cruza un umbral (28 °C, 20 °C, fila 5/6 o un cambio de franja horaria). Es intencional, para que el menú no parpadee con cada movimiento del slider.
+7. Con **"Restablecer valores"** vuelves al estado inicial entre una demostración y otra.
+
+> Si activas "Real (Tampico)" y la key de OpenWeatherMap aún no está activa, el panel avisa y sigue usando la temperatura simulada.
 
 ## Estructura y patrón
 
