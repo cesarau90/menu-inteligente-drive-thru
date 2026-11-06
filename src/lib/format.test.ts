@@ -1,5 +1,25 @@
 import { describe, expect, it } from 'vitest'
-import { formatClock, formatPrice } from './format'
+import type { Product } from '../types'
+import { formatClock, formatKicker, formatPrice } from './format'
+
+const prod = (category: Product['category'], temperature: Product['temperature']): Product => ({
+  id: 'x', name: 'X', price: 1, imageUrl: null, category, temperature, tags: [], emoji: '☕',
+})
+
+describe('formatKicker', () => {
+  it('categoría y temperatura', () => {
+    expect(formatKicker(prod('cafe', 'caliente'))).toBe('Café · Caliente')
+    expect(formatKicker(prod('frappe', 'fria'))).toBe('Frappé · Fría')
+  })
+  it('sin temperatura solo la categoría', () => {
+    expect(formatKicker(prod('postre', null))).toBe('Postre')
+    expect(formatKicker(prod('desayuno', null))).toBe('Desayuno')
+  })
+  it('bebidas no repiten la palabra bebida', () => {
+    expect(formatKicker(prod('bebida_fria', 'fria'))).toBe('Bebida fría')
+    expect(formatKicker(prod('bebida_caliente', 'caliente'))).toBe('Bebida caliente')
+  })
+})
 
 describe('formatPrice', () => {
   it('entero sin decimales', () => {

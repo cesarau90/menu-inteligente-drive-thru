@@ -3,8 +3,7 @@ import type { Category, Product } from '../types'
 
 const GROUPS: { title: string; categories: Category[] }[] = [
   { title: 'Café', categories: ['cafe'] },
-  { title: 'Otras bebidas', categories: ['bebida_caliente', 'bebida_fria'] },
-  { title: 'Frappés', categories: ['frappe'] },
+  { title: 'Bebidas y frappés', categories: ['bebida_caliente', 'bebida_fria', 'frappe'] },
   { title: 'Desayuno', categories: ['desayuno'] },
   { title: 'Postres y más', categories: ['postre', 'snack'] },
 ]

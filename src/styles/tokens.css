@@ -26,8 +26,9 @@
 * { box-sizing: border-box; }
 
 html {
-  /* 1rem = 20px a 1920 de ancho; escala con la pantalla del drive-thru */
-  font-size: clamp(12px, calc(100vw / 96), 28px);
+  /* El diseño mide 96rem × 54rem (16:9): 1rem = 20px a 1920×1080.
+     Escala con el lado limitante (ancho o alto) para que nada se salga en 1920×940 o 1366×768. */
+  font-size: clamp(10px, min(calc(100vw / 96), calc(100vh / 54)), 40px);
 }
 
 body {
