@@ -1,15 +1,18 @@
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { formatClock } from '../lib/format'
 import { describeMode, getContextKey, getQueueBand, getWeatherBand, recommend } from '../lib/recommendation'
 import type { DriveThruContext } from '../types'
 import { useClock } from './useClock'
 import { useControlState } from './useControlState'
 import { useMenu } from './useMenu'
+import { useTempInput } from './useTempInput'
 import { useWeather } from './useWeather'
 
 export function useDriveThru() {
   const { state: control, update, reset } = useControlState()
   const { products, source: menuSource } = useMenu()
+  const commitManualTemp = useCallback((manualTemp: number) => update({ manualTemp }), [update])
+  const tempInput = useTempInput(control.manualTemp, commitManualTemp)
   const now = useClock()
   const { realTemp, status: weatherStatus } = useWeather(control.weatherMode === 'real')
 
@@ -47,6 +50,7 @@ export function useDriveThru() {
     featured,
     menu,
     control,
+    tempInput,
     update,
     reset,
     weatherStatus,

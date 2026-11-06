@@ -122,3 +122,20 @@
 @media (max-width: 900px) {
   .panel__grid { grid-template-columns: 1fr; }
 }
+
+/* Botones rápidos de temperatura (demo) */
+.presets { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.2rem; }
+.presets button {
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  min-height: 2.8rem;
+  border: 0.15rem solid var(--ink);
+  border-radius: 0.2rem;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.presets button[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+.presets button:disabled { cursor: not-allowed; color: var(--ink-soft); border-color: var(--ink-soft); }

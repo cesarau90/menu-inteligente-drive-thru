@@ -33,9 +33,12 @@ export function ControlPanel({ app }: ControlPanelProps) {
             onChange={(weatherMode) => update({ weatherMode })}
           />
           <TempControl
+            text={app.tempInput.text}
             value={control.manualTemp}
             disabled={realActive}
-            onChange={(manualTemp) => update({ manualTemp })}
+            onTextChange={app.tempInput.onChange}
+            onBlur={app.tempInput.onBlur}
+            onPick={app.tempInput.pick}
           />
           <HourSelect
             mode={control.hourMode}
