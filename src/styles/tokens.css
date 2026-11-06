@@ -45,3 +45,22 @@ body {
   outline: 0.2rem solid var(--ink);
   outline-offset: 0.2rem;
 }
+
+/* ---------- Base para móvil ---------- */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+button, a, input, select, [role='button'] { touch-action: manipulation; }
+button, [role='button'] { -webkit-user-select: none; user-select: none; }
+
+/* En vertical (celular y tablet) no aplica el diseño de TV de 96×54rem: la escala sigue el ancho.
+   375 px → 16.3 px · 390 px → 16.5 px · 768 px → 21 px. */
+@media (orientation: portrait) {
+  html { font-size: clamp(15px, calc(11px + 1.4vw), 21px); }
+}
+/* El panel en una ventana horizontal pequeña (celular acostado): tamaño fijo legible. */
+@media (max-width: 900px) and (orientation: landscape) {
+  html:has(.panel) { font-size: 14px; }
+}

@@ -139,3 +139,86 @@
 }
 .presets button[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
 .presets button:disabled { cursor: not-allowed; color: var(--ink-soft); border-color: var(--ink-soft); }
+
+/* =====================================================================================
+   Panel en celular / tablet / ventana angosta (≤ 900 px): controles a ancho completo, áreas
+   táctiles ≥ 44 px y la vista previa debajo de los controles. El panel de escritorio no cambia.
+   ===================================================================================== */
+@media (max-width: 900px) {
+  .panel { padding: 1rem 1rem 2rem; overflow-x: hidden; }
+  .panel__head { flex-wrap: wrap; align-items: center; gap: 0.2rem 1rem; margin-bottom: 1.2rem; padding-bottom: 0.6rem; }
+  .panel__head h1 { font-size: 2.6rem; }
+  .panel__links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1rem; }
+
+  .panel__grid { grid-template-columns: minmax(0, 1fr); gap: 1.8rem; } /* la vista previa va debajo */
+  .panel__controls { gap: 1.5rem; }
+
+  .field__label { font-size: 1.1rem; }
+  .field__label strong { font-size: 1.8rem; }
+  .field__hint, .field__scale { font-size: 0.8rem; overflow-wrap: anywhere; }
+
+  /* Campos a ancho completo; 16 px mínimo para que iOS no haga zoom al enfocar */
+  .panel input[type='number'],
+  .panel select {
+    width: 100%;
+    max-width: none;
+    min-height: 48px;
+    font-size: max(16px, 1.1rem);
+  }
+
+  /* Slider: el elemento mide 44 px de alto y el pulgar 44 px */
+  .panel input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 44px;
+    margin: 0;
+    background: transparent;
+    accent-color: var(--accent);
+  }
+  .panel input[type='range']::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    background: var(--paper-deep);
+    border: 0.12rem solid var(--ink);
+    border-radius: 0.3rem;
+  }
+  .panel input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 44px;
+    height: 44px;
+    margin-top: calc((0.5rem + 0.24rem - 44px) / 2);
+    background: var(--accent);
+    border: 0.18rem solid var(--ink);
+    border-radius: 50%;
+  }
+  .panel input[type='range']::-moz-range-track {
+    height: 0.5rem;
+    background: var(--paper-deep);
+    border: 0.12rem solid var(--ink);
+    border-radius: 0.3rem;
+  }
+  .panel input[type='range']::-moz-range-thumb {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    border: 0.18rem solid var(--ink);
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  .seg { display: flex; width: 100%; }
+  .seg button { flex: 1; min-height: 48px; font-size: 1rem; padding: 0.6rem 0.4rem; }
+
+  .presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 0.6rem; }
+  .presets button { min-height: 48px; font-size: 1rem; padding: 0.5rem 0.6rem; }
+
+  .panel__reset { width: 100%; min-height: 48px; font-size: 1rem; }
+
+  .seg button:active, .presets button:active, .panel__reset:active { transform: scale(0.98); }
+
+  .panel__preview { padding: 1.1rem 1.2rem; }
+  .panel__mode { font-size: 1.9rem; }
+  .panel__facts { font-size: 0.9rem; overflow-wrap: anywhere; }
+  .panel__preview li { font-size: 1.15rem; }
+  .panel__note { font-size: 0.8rem; overflow-wrap: anywhere; }
+}

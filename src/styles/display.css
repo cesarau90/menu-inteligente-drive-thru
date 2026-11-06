@@ -355,3 +355,86 @@
   .card { animation: none; }
   .ctx__mode, .card__price { transition: none; }
 }
+
+/* =====================================================================================
+   Celular y tablet en vertical: una columna. El diseño de TV (horizontal y escritorio) queda
+   exactamente como arriba: todo lo siguiente vive dentro de (orientation: portrait).
+   ===================================================================================== */
+@media (orientation: portrait) {
+  .display { height: auto; min-height: 100dvh; display: block; overflow: visible; }
+
+  /* Barra de contexto compacta: temperatura, fila y hora en una fila; el modo, debajo */
+  .ctx { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ctx__cell { padding: 0.6rem 0.7rem 0.7rem; }
+  .ctx__label { font-size: 0.75rem; letter-spacing: 0.08em; text-wrap: balance; }
+  .ctx__value { font-size: 2rem; }
+  .ctx__unit { font-size: 0.9rem; margin-left: 0.2rem; }
+  .ctx__mode { grid-column: 1 / -1; padding: 0.7rem 1rem 0.8rem; }
+  .ctx__mode .ctx__value { font-size: 1.7rem; line-height: 1.05; }
+
+  /* Destacados apilados: foto arriba, nombre y precio abajo */
+  .featured { padding: 1rem; height: auto; }
+  .featured .featured__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    height: auto;
+    gap: 1rem;
+  }
+  .featured .featured__grid > .card { grid-column: auto; grid-row: auto; }
+
+  .card,
+  .card--hero,
+  .card--wide,
+  .card--compact { container-type: normal; display: flex; flex-direction: column; }
+
+  .card .card__art {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    flex: none;
+  }
+  .card .card__rank,
+  .card .card__kicker,
+  .card .card__badge { font-size: 0.8rem; padding: 0.25rem 0.6rem; }
+
+  .card .card__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 0.8rem;
+    row-gap: 0.15rem;
+    flex-wrap: nowrap;
+    justify-content: normal;
+    padding: 0.8rem 1rem 0.9rem;
+    border-left: 0;
+    border-top: 0.18rem solid var(--ink);
+  }
+  .card .card__name { grid-column: 1; flex: none; font-size: 1.6rem; line-height: 1.02; }
+  .card .card__sub {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+  }
+  .card .card__sub::before { display: block; width: 1.4rem; }
+  .card .card__price { grid-column: 2; grid-row: 1 / span 2; margin-left: 0; font-size: 2.2rem; }
+
+  /* Menú inferior: una columna por categoría, con los puntos de "recomendado ahora" */
+  .menu { grid-template-columns: 1fr; gap: 1.1rem 0; padding: 1rem 1rem 1.3rem; }
+  .menu__group h3 { font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .menu__group li { font-size: 1.1rem; line-height: 1.4; }
+  .menu__price { font-size: 1.3rem; }
+  .menu__name::before,
+  .menu__dot { width: 0.65rem; height: 0.65rem; }
+  .menu__legend { font-size: 0.8rem; margin-top: 0; }
+}
+
+/* Tablet vertical: dos columnas */
+@media (orientation: portrait) and (min-width: 600px) {
+  .featured .featured__grid { grid-template-columns: 1fr 1fr; }
+  .menu { grid-template-columns: 1fr 1fr; gap: 1.2rem 2rem; }
+}

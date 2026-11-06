@@ -5,6 +5,13 @@ import { QueueSlider } from './QueueSlider'
 import { TempControl } from './TempControl'
 import { WeatherToggle } from './WeatherToggle'
 
+const SYNC_TEXT = {
+  on: 'en vivo entre dispositivos (Supabase Realtime)',
+  connecting: 'conectando…',
+  error: 'sin conexión en vivo: solo este navegador',
+  off: 'solo este navegador (sin Supabase)',
+} as const
+
 interface ControlPanelProps {
   app: DriveThruApp
 }
@@ -68,6 +75,9 @@ export function ControlPanel({ app }: ControlPanelProps) {
           </ol>
           <p className="panel__note">
             Catálogo: {app.menuSource === 'supabase' ? 'Supabase' : 'respaldo local'}
+          </p>
+          <p className="panel__note" role="status" data-sync={app.realtime}>
+            Sincronización: {SYNC_TEXT[app.realtime]}
           </p>
         </section>
       </div>

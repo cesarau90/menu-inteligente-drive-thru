@@ -10,7 +10,7 @@ import { useTempInput } from './useTempInput'
 import { useWeather } from './useWeather'
 
 export function useDriveThru() {
-  const { state: control, update, reset } = useControlState()
+  const { state: control, update, reset, realtime } = useControlState()
   const { products, source: menuSource } = useMenu()
   const commitManualTemp = useCallback((manualTemp: number) => update({ manualTemp }), [update])
   const tempInput = useTempInput(control.manualTemp, commitManualTemp)
@@ -51,6 +51,7 @@ export function useDriveThru() {
     menuColumns,
     featuredIds,
     control,
+    realtime,
     tempInput,
     update,
     reset,
