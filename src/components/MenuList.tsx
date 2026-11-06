@@ -26,8 +26,9 @@ export function MenuList({ products }: MenuListProps) {
           <ul>
             {g.items.map((p) => (
               <li key={p.id}>
-                <span>{p.name}</span>
-                <span>{formatPrice(p.price)}</span>
+                <span className="menu__name">{p.name}</span>
+                <span className="menu__leader" aria-hidden="true" />
+                <span className="menu__price">{formatPrice(p.price)}</span>
               </li>
             ))}
           </ul>

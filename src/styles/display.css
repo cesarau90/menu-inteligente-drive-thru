@@ -241,8 +241,19 @@
 }
 /* Ancha: nombre, categoría y precio agrupados y centrados (sin hueco entre nombre y precio) */
 .card--wide .card__body { padding: 1rem 1.8rem 1.1rem; justify-content: center; gap: 0.7rem; }
-.card--compact .card__name { font-size: clamp(1.3rem, 14.5cqh, 2.5rem); }
-.card--compact .card__price { font-size: clamp(1.8rem, 22cqh, 3.3rem); }
+/* Compacta: mismo agrupado centrado que la ancha; la línea de categoría se ajusta al ancho y puede
+   partirse en dos líneas (nunca se corta). */
+.card--compact .card__body { justify-content: center; gap: 0.45rem; }
+.card--compact .card__name { font-size: clamp(1.3rem, 13cqh, 2.3rem); }
+.card--compact .card__price { font-size: clamp(1.8rem, 20cqh, 3.1rem); }
+.card--compact .card__sub {
+  display: block;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.card--compact .card__sub::before { display: none; }
 .card--wide .card__name { font-size: clamp(1.7rem, 21cqh, 3.4rem); }
 .card--wide .card__price { font-size: clamp(2.4rem, 31cqh, 4.8rem); }
 
@@ -274,15 +285,21 @@
 .menu__group ul { margin: 0; padding: 0; list-style: none; }
 .menu__group li {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
-  gap: 1rem;
+  gap: 0.6rem;
   font-size: 1.25rem;
   line-height: 1.28;
   font-weight: 600;
 }
-.menu__group li span:first-child { min-width: 0; overflow-wrap: anywhere; }
-.menu__group li span:last-child {
+.menu__name { min-width: 0; overflow-wrap: anywhere; }
+/* Puntos guía entre nombre y precio (como en un menú de cafetería) */
+.menu__leader {
+  flex: 1 1 1.2rem;
+  min-width: 1.2rem;
+  border-bottom: 0.16rem dotted rgb(244 235 221 / 0.5);
+  transform: translateY(-0.28em);
+}
+.menu__price {
   flex: none;
   font-family: var(--font-display);
   font-weight: 800;

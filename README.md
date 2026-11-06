@@ -43,7 +43,7 @@ VITE_OPENWEATHER_API_KEY=
 
 La tabla `products` tiene RLS activado con lectura pública solo de productos con `available = true`. Si Supabase falla o la tabla está vacía, la app usa el catálogo de respaldo (el panel indica cuál está activo).
 
-**Fotos de los productos.** Las 21 fotos viven en `public/products/<slug>.webp` (600×450, menos de 80 KB cada una) y la columna `image_url` apunta a ellas (por ejemplo `/products/frappe-caramelo.webp`). Si ya tenías el catálogo cargado en Supabase, corre [supabase/update-images.sql](supabase/update-images.sql) en el SQL Editor para asignarlas; si empiezas de cero, `seed.sql` ya las incluye. Si `image_url` está vacío o la foto falla al cargar, la tarjeta muestra un emoji sobre un bloque de color. Los créditos están en [Créditos de imágenes](#créditos-de-imágenes).
+**Fotos de los productos.** Las 21 fotos viven en `public/products/<slug>.webp` (600×450, menos de 80 KB cada una) y la columna `image_url` apunta a ellas (por ejemplo `/products/frappe-caramelo.webp`). Si ya tenías el catálogo cargado en Supabase, corre [supabase/update-images.sql](supabase/update-images.sql) en el SQL Editor para asignarlas; si empiezas de cero, `seed.sql` ya las incluye. Del mismo modo, [supabase/update-categories.sql](supabase/update-categories.sql) mueve "Cold brew" y "Latte helado" de Café a Bebidas frías en un catálogo ya cargado. Si `image_url` está vacío o la foto falla al cargar, la tarjeta muestra un emoji sobre un bloque de color. Los créditos están en [Créditos de imágenes](#créditos-de-imágenes).
 
 ### OpenWeatherMap
 

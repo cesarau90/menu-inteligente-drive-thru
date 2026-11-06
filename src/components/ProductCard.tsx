@@ -34,7 +34,7 @@ export function ProductCard({ product, rank, premium, variant }: ProductCardProp
       </div>
       <div className="card__body">
         <h2 className="card__name">{product.name}</h2>
-        {variant === 'wide' && <span className="card__sub">{formatKicker(product)}</span>}
+        {variant !== 'hero' && <span className="card__sub">{formatKicker(product)}</span>}
         <span className="card__price">{formatPrice(product.price)}</span>
       </div>
     </article>
