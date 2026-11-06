@@ -269,7 +269,7 @@
   padding: 0.9rem 2rem 1rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0 2rem;
+  gap: 0 1.6rem;
   align-items: start;
 }
 .menu__group { min-width: 0; }
@@ -286,16 +286,16 @@
 .menu__group li {
   display: flex;
   align-items: baseline;
-  gap: 0.6rem;
-  font-size: 1.25rem;
-  line-height: 1.28;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.3;
   font-weight: 600;
 }
 .menu__name { min-width: 0; overflow-wrap: anywhere; }
 /* Puntos guía entre nombre y precio (como en un menú de cafetería) */
 .menu__leader {
-  flex: 1 1 1.2rem;
-  min-width: 1.2rem;
+  flex: 1 1 1rem;
+  min-width: 1rem;
   border-bottom: 0.16rem dotted rgb(244 235 221 / 0.5);
   transform: translateY(-0.28em);
 }
@@ -303,8 +303,52 @@
   flex: none;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   font-variant-numeric: tabular-nums;
+}
+
+/* Productos destacados ahora: punto y color en el menú. Todos reservan el hueco del punto para que
+   los nombres queden alineados. */
+.menu__name::before {
+  content: '';
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: transparent;
+  vertical-align: 0.04em;
+}
+.menu__item--featured .menu__name { color: var(--accent-bright); }
+.menu__item--featured .menu__name::before { background: var(--accent-bright); }
+.menu__legend {
+  grid-column: 1 / -1;
+  justify-self: end;
+  margin: 0.5rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d9c9b4;
+}
+.menu__dot {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  vertical-align: 0.04em;
+}
+/* Texto solo para lectores de pantalla (pseudo-elemento: no altera el layout ni las medidas) */
+.menu__item--featured .menu__name::after {
+  content: ' (recomendado ahora)';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {

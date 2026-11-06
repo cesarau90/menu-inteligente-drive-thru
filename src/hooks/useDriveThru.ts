@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { formatClock } from '../lib/format'
+import { buildMenuColumns } from '../lib/menuColumns'
 import { describeMode, getContextKey, getQueueBand, getWeatherBand, recommend } from '../lib/recommendation'
 import type { DriveThruContext } from '../types'
 import { useClock } from './useClock'
@@ -31,10 +32,9 @@ export function useDriveThru() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [contextKey, products],
   )
-  const menu = useMemo(
-    () => products.filter((p) => !featured.some((f) => f.id === p.id)),
-    [products, featured],
-  )
+  // El menú inferior muestra SIEMPRE todo el catálogo (layout fijo); los destacados solo se marcan.
+  const menuColumns = useMemo(() => buildMenuColumns(products), [products])
+  const featuredIds = useMemo(() => featured.map((p) => p.id), [featured])
 
   const band = getWeatherBand(temperature)
   const premium = getQueueBand(control.queue) === 'larga'
@@ -48,7 +48,8 @@ export function useDriveThru() {
     contextKey,
     mode,
     featured,
-    menu,
+    menuColumns,
+    featuredIds,
     control,
     tempInput,
     update,

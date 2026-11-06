@@ -11,6 +11,7 @@
   --accent-frio: #9a3417;    /* bebidas calientes */
   --accent-templado: #435421; /* mixto */
   --accent: var(--accent-templado);
+  --accent-bright: #b9d66e;
 
   --font-display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
   --font-body: 'Instrument Sans', system-ui, sans-serif;
@@ -19,9 +20,10 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-band='calor'] { --accent: var(--accent-calor); }
-[data-band='frio'] { --accent: var(--accent-frio); }
-[data-band='templado'] { --accent: var(--accent-templado); }
+/* --accent-bright: versión clara del acento para texto/marcas sobre fondo oscuro (menú inferior) */
+[data-band='calor'] { --accent: var(--accent-calor); --accent-bright: #6fd0e8; }
+[data-band='frio'] { --accent: var(--accent-frio); --accent-bright: #ff9a6b; }
+[data-band='templado'] { --accent: var(--accent-templado); --accent-bright: #b9d66e; }
 
 * { box-sizing: border-box; }
 

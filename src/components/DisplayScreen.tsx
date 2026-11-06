@@ -18,7 +18,7 @@ export function DisplayScreen({ app }: DisplayScreenProps) {
         tempSource={app.usingRealTemp ? 'real' : 'simulada'}
       />
       <FeaturedGrid products={app.featured} contextKey={app.contextKey} premium={app.premium} />
-      <MenuList products={app.menu} />
+      <MenuList columns={app.menuColumns} featuredIds={app.featuredIds} />
     </main>
   )
 }

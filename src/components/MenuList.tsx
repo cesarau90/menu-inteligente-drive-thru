@@ -1,39 +1,35 @@
 import { formatPrice } from '../lib/format'
-import type { Category, Product } from '../types'
-
-const GROUPS: { title: string; categories: Category[] }[] = [
-  { title: 'Café', categories: ['cafe'] },
-  { title: 'Bebidas y frappés', categories: ['bebida_caliente', 'bebida_fria', 'frappe'] },
-  { title: 'Desayuno', categories: ['desayuno'] },
-  { title: 'Postres y más', categories: ['postre', 'snack'] },
-]
+import type { MenuColumn } from '../lib/menuColumns'
 
 interface MenuListProps {
-  products: Product[]
+  columns: MenuColumn[]
+  /** Ids de los productos destacados ahora: se marcan con un punto y color. */
+  featuredIds: string[]
 }
 
-export function MenuList({ products }: MenuListProps) {
-  const groups = GROUPS.map((g) => ({
-    title: g.title,
-    items: products.filter((p) => g.categories.includes(p.category)),
-  })).filter((g) => g.items.length > 0)
-
+export function MenuList({ columns, featuredIds }: MenuListProps) {
   return (
     <nav className="menu" aria-label="Menú completo">
-      {groups.map((g) => (
-        <div className="menu__group" key={g.title}>
-          <h3>{g.title}</h3>
+      {columns.map((col) => (
+        <div className="menu__group" key={col.title}>
+          <h3>{col.title}</h3>
           <ul>
-            {g.items.map((p) => (
-              <li key={p.id}>
-                <span className="menu__name">{p.name}</span>
-                <span className="menu__leader" aria-hidden="true" />
-                <span className="menu__price">{formatPrice(p.price)}</span>
-              </li>
-            ))}
+            {col.products.map((p) => {
+              const featured = featuredIds.includes(p.id)
+              return (
+                <li key={p.id} className={featured ? 'menu__item menu__item--featured' : 'menu__item'}>
+                  <span className="menu__name">{p.name}</span>
+                  <span className="menu__leader" aria-hidden="true" />
+                  <span className="menu__price">{formatPrice(p.price)}</span>
+                </li>
+              )
+            })}
           </ul>
         </div>
       ))}
+      <p className="menu__legend" aria-hidden="true">
+        <span className="menu__dot" /> Recomendado ahora
+      </p>
     </nav>
   )
 }
